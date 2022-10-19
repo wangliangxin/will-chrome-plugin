@@ -14,5 +14,11 @@
     "background": {
       "scripts": ["background.js"],
       "persistent": true
+    },
+    "icons": {
+      "16": "icon/sharpicons_Bat.png",
+      "32": "icon/sharpicons_Bat1.png",
+      "48": "icon/sharpicons_Bat2.png",
+      "128": "icon/sharpicons_Bat3.png"
     }
 }
