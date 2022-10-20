@@ -1,7 +1,7 @@
 {
     "name": "will-plugin",
     "description" : "something by wangliangxin",
-    "version": "1.0",
+    "version": "0.0.0.1",
     "manifest_version": 2,
     "browser_action": {
       "default_popup": "popup.html"
