@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(function () {
+chrome.runtime.onInstalled.addListener(function (reason) {
     chrome.contextMenus.create({
         id: 'article-share',
         title: '快速分享',
@@ -23,7 +23,10 @@ chrome.runtime.onInstalled.addListener(function () {
                 url: "https://willwong.gitee.io/will/"
             })
         }
-      });
+    });
+    if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
+        checkCommandShortcuts();
+    }
 });
 
 
@@ -32,6 +35,13 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
         case 'article-share':
             handleArticleShare();
             break;
+    }
+});
+
+chrome.commands.onCommand.addListener((command) => {
+    console.log(`Command: ${command}`);
+    if(command === 'run-share'){
+        handleArticleShare();
     }
 });
 
@@ -48,3 +58,26 @@ function handleArticleShare(){
         copyFrom.remove();
       });
 }
+
+
+function checkCommandShortcuts() {
+  // 获取当前插件已注册的快捷键
+  chrome.commands.getAll((commands) => {
+    let missingShortcuts = [];
+
+    for (let {name, shortcut} of commands) {
+      // 如果冲突无法注册快捷键默认值，则 shortcut 值为空字符串
+      if (shortcut === '') {
+        missingShortcuts.push(name);
+      }
+    }
+    
+    // 如果该扩展程序与其他扩展程序真的存在快捷键冲突
+    if (missingShortcuts.length > 0) {
+      // Update the extension UI to inform the user that one or more
+      // commands are currently unassigned.
+      console.log("您的快捷键存在冲突")
+    }
+  });
+}
+  

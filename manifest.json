@@ -20,5 +20,14 @@
       "32": "icon/sharpicons_Bat1.png",
       "48": "icon/sharpicons_Bat2.png",
       "128": "icon/sharpicons_Bat3.png"
+    },
+    "commands": {
+      "run-share": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+L",
+          "mac": "Command+Shift+L"
+        },
+        "description": "Run \"share\" on the current page."
+      }
     }
 }

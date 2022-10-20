@@ -48,3 +48,8 @@ createProperties ( object )
 callback ( optional function )
 	在创建完菜单项后触发。如果创建过程中有错误产生，其详细信息在Chrome.extension.lastError中。
 ```
+
+
+## 参考文章
+
+- [浏览器插件开发必备概念——用户交互 - 掘金](https://juejin.cn/post/6997402976058867748)
